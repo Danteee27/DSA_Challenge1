@@ -139,7 +139,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Calc.cpp" />
+    <ClCompile Include="Data.cpp" />
     <ClCompile Include="DSA_Challenge1_Group7.cpp" />
+    <ClCompile Include="Output.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Calc.h" />
+    <ClInclude Include="Data.h" />
+    <ClInclude Include="Output.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
