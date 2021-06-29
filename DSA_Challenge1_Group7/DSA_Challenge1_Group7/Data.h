@@ -30,7 +30,6 @@ struct Student {
 	wstring first;
 	wstring programID;
 	vector<Score> score;
-	vector<Score> foundation;
 	double allGPA;
 	double foundGPA;
 	int Acc_Credits = 0;

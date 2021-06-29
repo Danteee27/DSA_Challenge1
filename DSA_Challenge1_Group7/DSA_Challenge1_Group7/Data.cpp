@@ -1,20 +1,31 @@
 #include "Data.h"
 
-double roundDouble(double var) 
-{
+double roundDouble(double var) {
 	double value = (int)(var * 100 + 0.5);
 	return (double)value / 100;
 }
 
-void CalcFoundGPA(Student& a) { 
-	if (a.foundation.size() < 7) {
+// count the number of foundation courses a student has taken
+int countFound(Student a) {
+	int count = 0, size = a.score.size();
+	for (int i = 0; i < size; i++) {
+		if (a.score[i].spec == 1)
+			count++;
+	}
+	return count;
+}
+
+void CalcFoundGPA(Student& a, int x) { // x: the number of all foundation courses 
+	if (countFound(a) < x) {
 		a.foundGPA = 0;
 		return;
 	}
 	double temp = 0, credits = 0;
-	for (int i = 0; i < 7; i++) {
-		temp += a.foundation[i].grade * a.foundation[i].credits;
-		credits += a.foundation[i].credits;
+	for (int i = 0; i < x; i++) {
+		if (a.score[i].spec == 1) {
+			temp += a.score[i].grade * a.score[i].credits;
+			credits += a.score[i].credits;
+		}
 	}
 	double fGPA = temp / credits;
 	a.foundGPA = roundDouble(fGPA);
