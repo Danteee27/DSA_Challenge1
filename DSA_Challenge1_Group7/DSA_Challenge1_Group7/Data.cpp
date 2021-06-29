@@ -15,11 +15,9 @@ int countFound(Student a) {
 	return count;
 }
 
-void CalcFoundGPA(Student& a, int x) { // x: the number of all foundation courses 
-	if (countFound(a) < x) {
-		a.foundGPA = 0;
-		return;
-	}
+double CalcFoundGPA(Student& a, int x) { // x: the number of all foundation courses 
+	if (countFound(a) < x) 
+		return 0;
 	double temp = 0, credits = 0;
 	for (int i = 0; i < x; i++) {
 		if (a.score[i].spec == 1) {
@@ -28,10 +26,10 @@ void CalcFoundGPA(Student& a, int x) { // x: the number of all foundation course
 		}
 	}
 	double fGPA = temp / credits;
-	a.foundGPA = roundDouble(fGPA);
+	return roundDouble(fGPA);
 }
 
-void CalcAllGPA(Student& a) { 
+double CalcAllGPA(Student& a) { 
 	double temp = 0, credits = 0;
 	int size = a.score.size();
 	for (int i = 0; i < size; i++) {
@@ -41,16 +39,16 @@ void CalcAllGPA(Student& a) {
 		}
 	}
 	double AllGPA = temp / credits;
-	a.allGPA = roundDouble(AllGPA);
+	return roundDouble(AllGPA);
 }
 
-void CalcAcc_NCredits(Student& a) {
+int CalcAcc_NCredits(Student& a) {
 	int credits = 0, size = a.score.size();
 	for (int i = 0; i < size; i++) {
 		if (a.score[i].grade >= 5)
 			credits += a.score[i].credits;
 	}
-	a.Acc_Credits = credits;
+	return credits;
 }
 
 bool isGreater(Student a, Student b) {
