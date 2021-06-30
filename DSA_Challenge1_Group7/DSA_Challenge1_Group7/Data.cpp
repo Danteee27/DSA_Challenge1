@@ -1,71 +1,157 @@
 #include "Data.h"
 
-double roundDouble(double var) {
-	double value = (int)(var * 100 + 0.5);
-	return (double)value / 100;
+void Vietlanguage()
+{
+	_setmode(_fileno(stdin), _O_U16TEXT);
+	_setmode(_fileno(stdout), _O_U16TEXT);
 }
 
-// count the number of foundation courses a student has taken
-int countFound(Student a) {
-	int count = 0, size = a.score.size();
-	for (int i = 0; i < size; i++) {
-		if (a.score[i].spec == 1)
-			count++;
-	}
-	return count;
+void ASCIIlanguage()
+{
+	_setmode(_fileno(stdin), _O_TEXT);
+	_setmode(_fileno(stdout), _O_TEXT);
 }
 
-double CalcFoundGPA(Student& a, int x) { // x: the number of all foundation courses 
-	if (countFound(a) < x) 
-		return 0;
-	double temp = 0, credits = 0;
-	for (int i = 0; i < x; i++) {
-		if (a.score[i].spec == 1) {
-			temp += a.score[i].grade * a.score[i].credits;
-			credits += a.score[i].credits;
+
+int checkSpec(Score sco, vector<Score> sco_list) {
+	for (int i = 0; i < sco_list.size(); i++)
+		if (sco.ID == sco_list[i].ID)
+			return sco_list[i].spec;
+	return -1;
+}
+
+vector<Score> ReadAF(string path, int& foundation) {
+	wfstream fin(path, wfstream::in);
+
+	fin.imbue(std::locale(std::locale::empty(), new std::codecvt_utf8<wchar_t>));
+
+	fin.seekg(-1, ios_base::end);
+	int end = fin.tellg(); // Ki tu cuoi cung cua .csv
+	fin.seekg(0, ios_base::beg);
+
+	fin.ignore(100, wchar_t(0xfeff)); // Bo ki tu dau tien 
+
+	fin.ignore(256, '\n'); // Bo line dau tien 
+
+	vector<Score> res;
+
+	Score sco_temp;
+
+	wstring temp;
+
+	while (fin.tellg() < end) {
+		getline(fin, sco_temp.ID, L',');
+		Vietlanguage();
+		getline(fin, sco_temp.name, L',');
+		ASCIIlanguage();
+		getline(fin, temp);
+		if (temp == L"foundation") {
+			sco_temp.spec = 1;
+			foundation++;
 		}
+		else if (temp == L"sub") sco_temp.spec = 0;
+
+		res.push_back(sco_temp);
 	}
-	double fGPA = temp / credits;
-	return roundDouble(fGPA);
+
+	return res;
+
 }
 
-double CalcAllGPA(Student& a) { 
-	double temp = 0, credits = 0;
-	int size = a.score.size();
-	for (int i = 0; i < size; i++) {
-		if (a.score[i].spec != -1) {
-			temp += a.score[i].grade * a.score[i].credits;
-			credits += a.score[i].credits;
+
+vector<Student> ReadStudent(vector<Score> sco_list, string path) {  // File chua hoan thien nen chi doc toi line 16690
+
+	vector<Student> List;
+
+	wfstream fin(path, wfstream::in);
+
+	fin.imbue(std::locale(std::locale::empty(), new std::codecvt_utf8<wchar_t>));
+
+	fin.seekg(-1, ios_base::end);
+	int end = fin.tellg(); // Ki tu cuoi cung cua .csv
+	fin.seekg(0, ios_base::beg);
+
+	fin.ignore(100, wchar_t(0xfeff)); // Bo ki tu dau tien 
+
+	fin.ignore(256, '\n'); // Bo line dau tien 
+
+	wstring temp;
+
+	wstring temp2;
+
+	Student stu_temp;
+
+	Score sco_temp;
+
+	int first_check = 0;
+
+
+	int debug_count = 0;
+
+	const int DEBUG_UNTIL_CRASH = 16691;
+
+	while (/*fin.tellg() < end*/ debug_count < DEBUG_UNTIL_CRASH)
+	{
+		getline(fin, temp, L','); // Bo qua MAJ
+
+		getline(fin, temp, L',');
+
+		if (first_check == 0) temp2 = temp; // Lan dau tien set temp_ID2
+
+		if (temp != temp2) {
+			List.push_back(stu_temp);
+			stu_temp.score.clear();					// Reset vector score trong Student
+
+			first_check = 0;
 		}
-	}
-	double AllGPA = temp / credits;
-	return roundDouble(AllGPA);
-}
 
-int CalcAcc_NCredits(Student& a) {
-	int credits = 0, size = a.score.size();
-	for (int i = 0; i < size; i++) {
-		if (a.score[i].grade >= 5)
-			credits += a.score[i].credits;
-	}
-	return credits;
-}
+		temp2 = temp; // Gan gia tri ID de check cho den khi ID khac'
 
-bool isGreater(Student a, Student b) {
-	if (a.foundGPA > b.foundGPA)
-		return 1;
-	else if (a.foundGPA < b.foundGPA)
-		return 0;
-	else {
-		if (a.allGPA > b.allGPA)
-			return 1;
-		else if (a.allGPA < b.allGPA)
-			return 0;
-		else {
-			if (a.Acc_Credits > b.Acc_Credits)
-				return 1;
-			else
-				return 0;
-		}
+		stu_temp.StudentID = temp2;
+		getline(fin, stu_temp.last, L',');
+		getline(fin, stu_temp.first, L',');
+		getline(fin, stu_temp.programID, L',');
+
+		wstring Num_Temp;
+		getline(fin, Num_Temp, L','); // Bo qua 1 cot AY
+
+
+		getline(fin, Num_Temp, L',');
+
+		sco_temp.term = stoi(Num_Temp);
+		getline(fin, sco_temp.ID, L',');
+
+		Vietlanguage();
+		getline(fin, sco_temp.name, L',');
+		ASCIIlanguage();
+
+		getline(fin, Num_Temp, L',');   // Bo qua 1 cot Class
+
+
+		getline(fin, Num_Temp, L',');
+		sco_temp.grade = Num_Temp == L"NULL" ? 0 : stod(Num_Temp);
+
+		debug_count++;
+
+		getline(fin, Num_Temp, L',');	// GradeType la` o^ tro^'ng
+
+		getline(fin, Num_Temp);
+		sco_temp.credits = stoi(Num_Temp);
+
+		sco_temp.spec = checkSpec(sco_temp, sco_list);
+
+
+		stu_temp.score.push_back(sco_temp);
+
+
+
+		first_check = 1;
+
+		if (debug_count == 35) break;
 	}
+
+
+
+
+	return List;
 }

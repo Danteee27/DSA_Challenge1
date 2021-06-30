@@ -1,5 +1,5 @@
-#ifndef Data
-#define Data
+#ifndef __DATA
+#define __DATA
 
 #include<iostream>
 #include<iomanip>
@@ -34,5 +34,16 @@ struct Student {
 	double foundGPA;
 	int Acc_Credits = 0;
 };
+
+
+void Vietlanguage();
+
+void ASCIIlanguage();
+
+int checkSpec(Score sco, vector<Score> sco_list);
+
+vector<Score> ReadAF(string path, int& foundation);
+
+vector<Student> ReadStudent(vector<Score> sco_list, string path);
 
 #endif
