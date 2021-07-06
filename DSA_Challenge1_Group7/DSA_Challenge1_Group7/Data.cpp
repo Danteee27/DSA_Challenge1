@@ -59,7 +59,7 @@ vector<Score> ReadAF(string path, int& foundation) {
 }
 
 
-vector<Student> ReadStudent(vector<Score> sco_list, string path) {  // File chua hoan thien nen chi doc toi line 16690
+vector<Student> ReadStudent(vector<Score> sco_list,int foundNum, string path) {  // File chua hoan thien nen chi doc toi line 16690
 
 	vector<Student> List;
 
@@ -88,7 +88,7 @@ vector<Student> ReadStudent(vector<Score> sco_list, string path) {  // File chua
 
 	int debug_count = 0;
 
-	const int DEBUG_UNTIL_CRASH = 16691;
+	const int DEBUG_UNTIL_CRASH = 16691; // Line 16692 la line loi~
 
 	while (/*fin.tellg() < end*/ debug_count < DEBUG_UNTIL_CRASH)
 	{
@@ -99,6 +99,7 @@ vector<Student> ReadStudent(vector<Score> sco_list, string path) {  // File chua
 		if (first_check == 0) temp2 = temp; // Lan dau tien set temp_ID2
 
 		if (temp != temp2) {
+			stu_temp.score.foundGPA = CalcFoundGPA(stu_temp, foundNum);
 			List.push_back(stu_temp);
 			stu_temp.score.clear();					// Reset vector score trong Student
 
@@ -145,9 +146,10 @@ vector<Student> ReadStudent(vector<Score> sco_list, string path) {  // File chua
 
 
 
+
+
 		first_check = 1;
 
-		if (debug_count == 35) break;
 	}
 
 
