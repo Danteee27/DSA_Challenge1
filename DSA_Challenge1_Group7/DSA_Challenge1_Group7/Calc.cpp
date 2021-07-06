@@ -71,3 +71,55 @@ bool isGreater(Student a, Student b) {
 		}
 	}
 }
+
+
+// source: https://codereview.stackexchange.com/questions/167680/merge-sort-implementation-with-vectors
+// sort danh sach sinh vien theo StudentID
+void mergeSort(vector<Student>& left, vector<Student>& right, vector<Student>& bars)
+{
+	int nL = left.size();
+	int nR = right.size();
+	int i = 0, j = 0, k = 0;
+
+	while (j < nL && k < nR)
+	{
+		wstring b1 = left[j].StudentID;
+		wstring b2 = right[k].StudentID;
+		int c1 = stoi(b1.erase(0, 2));
+		int c2 = stoi(b2.erase(0, 2));
+
+		if (c1 < c2) {
+			bars[i] = left[j];
+			j++;
+		}
+		else {
+			bars[i] = right[k];
+			k++;
+		}
+		i++;
+	}
+	while (j < nL) {
+		bars[i] = left[j];
+		j++; i++;
+	}
+	while (k < nR) {
+		bars[i] = right[k];
+		k++; i++;
+	}
+}
+void sort(vector<Student>& bar) {
+	if (bar.size() <= 1) return;
+
+	int mid = bar.size() / 2;
+	vector<Student> left;
+	vector<Student> right;
+
+	for (size_t j = 0; j < mid; j++)
+		left.push_back(bar[j]);
+	for (size_t j = 0; j < (bar.size()) - mid; j++)
+		right.push_back(bar[mid + j]);
+
+	sort(left);
+	sort(right);
+	mergeSort(left, right, bar);
+}
