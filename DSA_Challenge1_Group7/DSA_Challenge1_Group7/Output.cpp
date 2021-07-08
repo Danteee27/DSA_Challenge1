@@ -1,7 +1,7 @@
 #include "Output.h"
 
 void NhungNguoiXungDang(vector<Student> StuList, string path) {
-	wofstream fout(path, ios::app);
+	wofstream fout(path, std::ios::app);
 	fout.imbue(std::locale(std::locale::empty(), new std::codecvt_utf8<wchar_t>));
 	fout << L"StudentID,LastName,FirstName,RegDate,I1,I2,I3,I4,I5,I6,Selected,Chosen,GPA_Foundation,GPA_All" << endl;
 	for (int i = 0; i < StuList.size(); i++) {
@@ -13,9 +13,9 @@ void NhungNguoiXungDang(vector<Student> StuList, string path) {
 }
 
 void writeMajor(vector<Student> major_list, wstring path) {
-	wofstream fout;
-	fout.open(path + L".csv");
+	wofstream fout(path + L".csv");;
 
+			
 	fout.imbue(std::locale(std::locale::empty(), new std::codecvt_utf8<wchar_t>));
 
 	// line dau tien
@@ -33,5 +33,4 @@ void writeMajor(vector<Student> major_list, wstring path) {
 		}
 	}
 
-	fout.close();
 }

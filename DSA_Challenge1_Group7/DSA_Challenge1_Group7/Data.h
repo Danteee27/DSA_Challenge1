@@ -14,7 +14,25 @@
 #include <map>
 #include <unordered_map>
 
-using namespace std;
+using std::wstring;
+
+using std::unordered_map;
+
+using std::string;
+
+using std::cout;
+
+using std::cin;
+
+using std::wcout;
+using std::wcin;
+using std::vector;
+using std::endl;
+using std::wofstream;
+using std::wifstream;
+using std::wfstream;
+
+
 
 typedef unordered_map<wstring, int> mapWSI;
 typedef struct Student Student;

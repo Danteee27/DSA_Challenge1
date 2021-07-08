@@ -2,8 +2,8 @@
 #include "Calc.h"
 
 void Vietlanguage() {
-	_setmode(_fileno(stdin), _O_U16TEXT);
-	_setmode(_fileno(stdout), _O_U16TEXT);
+	_setmode(_fileno(stdin), 0x00020000);
+	_setmode(_fileno(stdout), 0x00020000);
 }
 
 void ASCIIlanguage() {
@@ -25,9 +25,9 @@ vector<Score> ReadAF(string path, int &foundation) {
 
 	fin.imbue(std::locale(std::locale::empty(), new std::codecvt_utf8<wchar_t>));
 
-	fin.seekg(-1, ios_base::end);
+	fin.seekg(-1, std::ios_base::end);
 	int end = fin.tellg(); // Ki tu cuoi cung cua .csv
-	fin.seekg(0, ios_base::beg);
+	fin.seekg(0, std::ios_base::beg);
 
 	fin.ignore(100, wchar_t(0xfeff)); // Bo ki tu dau tien 
 
@@ -65,10 +65,10 @@ vector<Student> ReadStudent_Interest(string path) {
 
 	fin.imbue(std::locale(std::locale::empty(), new std::codecvt_utf8<wchar_t>));
 
-	fin.seekg(-1, ios_base::end);
+	fin.seekg(-1, std::ios_base::end);
 
 	int end = fin.tellg(); // Ki tu cuoi cung cua .csv
-	fin.seekg(0, ios_base::beg);
+	fin.seekg(0, std::ios_base::beg);
 
 	fin.ignore(100, wchar_t(0xfeff)); // Bo ki tu dau tien 
 
@@ -81,7 +81,6 @@ vector<Student> ReadStudent_Interest(string path) {
 	int debug = 0;
 
 	
-	wstringstream ss;
 
 
 
@@ -125,9 +124,9 @@ vector<Student> ReadStudent_Grading(vector<Score> sco_list, string path) {
 
 	fin.imbue(std::locale(std::locale::empty(), new std::codecvt_utf8<wchar_t>));
 
-	fin.seekg(-1, ios_base::end);
+	fin.seekg(-1, std::ios_base::end);
 	int end = fin.tellg(); // Ki tu cuoi cung cua .csv
-	fin.seekg(0, ios_base::beg);
+	fin.seekg(0, std::ios_base::beg);
 
 	fin.ignore(100, wchar_t(0xfeff)); // Bo ki tu dau tien 
 
@@ -218,10 +217,10 @@ unordered_map<wstring, int> MajorRead(string path) {
 
 	fin.imbue(std::locale(std::locale::empty(), new std::codecvt_utf8<wchar_t>));
 
-	fin.seekg(-1, ios_base::end);
+	fin.seekg(-1, std::ios_base::end);
 
 	int end = fin.tellg(); // Ki tu cuoi cung cua .csv
-	fin.seekg(0, ios_base::beg);
+	fin.seekg(0, std::ios_base::beg);
 
 	fin.ignore(100, wchar_t(0xfeff)); // Bo ki tu dau tien 
 
