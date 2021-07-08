@@ -1,4 +1,3 @@
-
 #include "Calc.h"
 
 

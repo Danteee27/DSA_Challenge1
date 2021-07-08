@@ -6,33 +6,21 @@
 #include <string>
 #include <fstream>
 #include <locale>
-#include<codecvt>
-#include<Windows.h>
+#include <codecvt>
+#include <Windows.h>
 #include <sstream>
 #include <fcntl.h>  
 #include <io.h>
 #include <map>
 #include <unordered_map>
+
 using namespace std;
 
 typedef unordered_map<wstring, int> mapWSI;
-//
-//
-//
-//
-//
+typedef struct Student Student;
 
-void Vietlanguage()
-{
-	_setmode(_fileno(stdin), _O_U16TEXT);
-	_setmode(_fileno(stdout), _O_U16TEXT);
-}
-
-void ASCIIlanguage()
-{
-	_setmode(_fileno(stdin), _O_TEXT);
-	_setmode(_fileno(stdout), _O_TEXT);
-}
+void Vietlanguage();
+void ASCIIlanguage();
 
 
 struct Score {
@@ -74,4 +62,9 @@ void XoaNhungHocSinhKhongCoThamVong(vector<Student>& List);
 void HopNhatHocSinh(vector<Student> Interest_List, vector<Student>& Grade_List);
 void HopNhatNhungHocSinhVoTinhBiTrung(vector<Student>& List_Student_Grading, int foundation);
 
+void mergeSort(vector<Student>& left, vector<Student>& right, vector<Student>& bars);
+void sort(vector<Student>& bar);
+
+void mergeSort_grade(vector<Student>& left, vector<Student>& right, vector<Student>& bars);
+void sort_grade(vector<Student>& bar);
 #endif

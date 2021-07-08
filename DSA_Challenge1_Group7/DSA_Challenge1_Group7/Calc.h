@@ -1,5 +1,6 @@
-#ifndef Calc
-#define Calc
+#ifndef _CALC_
+#define _CALC_
+
 #include "Data.h"
 
 

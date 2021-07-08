@@ -1,4 +1,5 @@
 #include "Data.h"
+#include "Calc.h"
 
 void Vietlanguage() {
 	_setmode(_fileno(stdin), _O_U16TEXT);
@@ -326,29 +327,10 @@ void HopNhatNhungHocSinhVoTinhBiTrung(vector<Student>& List_Student_Grading, int
 
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // source: https://codereview.stackexchange.com/questions/167680/merge-sort-implementation-with-vectors
 
-// sort danh sach sinh vien theo StudentID
-void mergeSort(vector<Student>& left, vector<Student>& right, vector<Student>& bars) {
+void mergeSort(vector<Student>& left, vector<Student>& right, vector<Student>& bars)
+{
 	int nL = left.size();
 	int nR = right.size();
 	int i = 0, j = 0, k = 0;
@@ -391,13 +373,13 @@ void sort(vector<Student>& bar) {
 	for (size_t j = 0; j < (bar.size()) - mid; j++)
 		right.push_back(bar[mid + j]);
 
-	sort_StudentID(left);
-	sort_StudentID(right);
-	mergeSort_StudentID(left, right, bar);
+	sort(left);
+	sort(right);
+	mergeSort(left, right, bar);
 }
 
-// sort danh sach sinh vien theo grade
-void mergeSort_grade(vector<Student>& left, vector<Student>& right, vector<Student>& bars) {
+void mergeSort_grade(vector<Student>& left, vector<Student>& right, vector<Student>& bars)
+{
 	int nL = left.size();
 	int nR = right.size();
 	int i = 0, j = 0, k = 0;
@@ -405,7 +387,7 @@ void mergeSort_grade(vector<Student>& left, vector<Student>& right, vector<Stude
 	while (j < nL && k < nR)
 	{
 
-		if (!isGreater(left[j],right[k])) {
+		if (isGreater(left[j], right[k])) {
 			bars[i] = left[j];
 			j++;
 		}

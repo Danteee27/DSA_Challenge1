@@ -1,4 +1,5 @@
 #include "Data.h"
+#include "Output.h"
 
 int main(int argc, char* argv[]) {
 	int foundation_num = 0;
@@ -20,17 +21,19 @@ int main(int argc, char* argv[]) {
 	unordered_map<wstring, int> major = MajorRead("Majors.csv");
 	SapDatThamVong(List_Student_Grading, major);
 	
-	if (strcmp(argv[1], "-all") == 0) {
-		NhungNguoiXungDang(List_Student_Grading, "Result.csv");
-	}
-	
-	if (strcmp(argv[1], "-s") == 0) {
-		wstring TenNguoiThan(argv[2]);
-		TimNguoiThan(List_Student_Grading, TenNguoiThan);
-	}
-	
-	if (strcmp(argv[1], "-m") == 0) {
-		wstring TenNhaO(argv[2]);
-		writeMajor(List_Student_Grading, TenNhaO);
-	}
+	TimNguoiThan(List_Student_Grading, L"SV43");
+
+	//if (strcmp(argv[1], "-all") == 0) {
+	//	NhungNguoiXungDang(List_Student_Grading, "Result.csv");
+	//}
+	//
+	//if (strcmp(argv[1], "-s") == 0) {
+	//	wstring TenNguoiThan(argv[2]);
+	//	TimNguoiThan(List_Student_Grading, TenNguoiThan);
+	//}
+	//
+	//if (strcmp(argv[1], "-m") == 0) {
+	//	wstring TenNhaO(argv[2]);
+	//	writeMajor(List_Student_Grading, TenNhaO);
+	//}
 }
