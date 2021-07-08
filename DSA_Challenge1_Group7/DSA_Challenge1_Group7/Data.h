@@ -13,6 +13,7 @@
 #include <io.h>
 #include <map>
 #include <unordered_map>
+
 using namespace std;
 
 typedef unordered_map<wstring, int> mapWSI;
@@ -22,17 +23,9 @@ typedef unordered_map<wstring, int> mapWSI;
 //
 //
 
-void Vietlanguage()
-{
-	_setmode(_fileno(stdin), _O_U16TEXT);
-	_setmode(_fileno(stdout), _O_U16TEXT);
-}
+void Vietlanguage();
 
-void ASCIIlanguage()
-{
-	_setmode(_fileno(stdin), _O_TEXT);
-	_setmode(_fileno(stdout), _O_TEXT);
-}
+void ASCIIlanguage();
 
 
 struct Score {

@@ -1,2 +1,20 @@
-﻿  Output.cpp
-  DSA_Challenge1_Group7.vcxproj -> C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\x64\Debug\DSA_Challenge1_Group7.exe
+﻿  Data.cpp
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\Data.cpp(28,10): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\Data.cpp(69,10): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\Data.cpp(128,10): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\Data.cpp(222,10): warning C4244: 'initializing': conversion from 'std::streamoff' to 'int', possible loss of data
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\Data.cpp(352,22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\Data.cpp(353,23): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\Data.cpp(385,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\Data.cpp(394,2): error C3861: 'sort_StudentID': identifier not found
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\Data.cpp(395,2): error C3861: 'sort_StudentID': identifier not found
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\Data.cpp(396,2): error C3861: 'mergeSort_StudentID': identifier not found
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\Data.cpp(401,22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\Data.cpp(402,23): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\Data.cpp(430,26): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  DSA_Challenge1_Group7.cpp
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\DSA_Challenge1_Group7.cpp(11,2): error C3861: 'sort': identifier not found
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\DSA_Challenge1_Group7.cpp(12,2): error C3861: 'sort': identifier not found
+C:\Users\Lenovo\OneDrive\Desktop\DSA_Challenge1\DSA_Challenge1_Group7\DSA_Challenge1_Group7\DSA_Challenge1_Group7.cpp(18,2): error C3861: 'sort_grade': identifier not found
+  Output.cpp
+  Generating Code...

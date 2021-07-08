@@ -1,7 +1,7 @@
 #ifndef Calc
 #define Calc
-#include "Data.h"
 
+#include "Data.h"
 
 double roundDouble(double var);
 

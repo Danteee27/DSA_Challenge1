@@ -20,7 +20,7 @@ int main(int argc, char* argv[]) {
 	unordered_map<wstring, int> major = MajorRead("Majors.csv");
 	SapDatThamVong(List_Student_Grading, major);
 	
-	if (strcmp(argv[1], "-all") == 0) {
+	/*if (strcmp(argv[1], "-all") == 0) {
 		NhungNguoiXungDang(List_Student_Grading, "Result.csv");
 	}
 	
@@ -32,5 +32,5 @@ int main(int argc, char* argv[]) {
 	if (strcmp(argv[1], "-m") == 0) {
 		wstring TenNhaO(argv[2]);
 		writeMajor(List_Student_Grading, TenNhaO);
-	}
+	}*/
 }
