@@ -13,6 +13,7 @@
 #include <io.h>
 #include <map>
 #include <unordered_map>
+#include <cstdio>
 
 using std::wstring;
 

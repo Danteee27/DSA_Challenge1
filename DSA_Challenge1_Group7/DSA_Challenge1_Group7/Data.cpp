@@ -23,7 +23,7 @@ int checkSpec(Score sco, vector<Score> sco_list) {
 vector<Score> ReadAF(string path, int &foundation) {
 	wfstream fin(path, wfstream::in);
 
-	fin.imbue(std::locale(std::locale::empty(), new std::codecvt_utf8<wchar_t>));
+	fin.imbue(std::locale(std::locale(), new std::codecvt_utf8<wchar_t>));
 
 	fin.seekg(-1, std::ios_base::end);
 	int end = fin.tellg(); // Ki tu cuoi cung cua .csv
@@ -63,7 +63,7 @@ vector<Student> ReadStudent_Interest(string path) {
 
 	wfstream fin(path, wfstream::in);
 
-	fin.imbue(std::locale(std::locale::empty(), new std::codecvt_utf8<wchar_t>));
+	fin.imbue(std::locale(std::locale(), new std::codecvt_utf8<wchar_t>));
 
 	fin.seekg(-1, std::ios_base::end);
 
@@ -122,7 +122,7 @@ vector<Student> ReadStudent_Grading(vector<Score> sco_list, string path) {
 
 	wfstream fin(path, wfstream::in);
 
-	fin.imbue(std::locale(std::locale::empty(), new std::codecvt_utf8<wchar_t>));
+	fin.imbue(std::locale(std::locale(), new std::codecvt_utf8<wchar_t>));
 
 	fin.seekg(-1, std::ios_base::end);
 	int end = fin.tellg(); // Ki tu cuoi cung cua .csv
@@ -215,7 +215,7 @@ unordered_map<wstring, int> MajorRead(string path) {
 	unordered_map<wstring, int> res;
 	wfstream fin(path, wfstream::in);
 
-	fin.imbue(std::locale(std::locale::empty(), new std::codecvt_utf8<wchar_t>));
+	fin.imbue(std::locale(std::locale(), new std::codecvt_utf8<wchar_t>));
 
 	fin.seekg(-1, std::ios_base::end);
 
