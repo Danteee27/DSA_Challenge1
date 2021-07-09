@@ -316,8 +316,6 @@ void HopNhatNhungHocSinhVoTinhBiTrung(vector<Student>& List_Student_Grading, int
 		List_Student_Grading[i].allGPA = CalcAllGPA(List_Student_Grading[i]);
 
 		if (erase > 0) {
-
-
 			List_Student_Grading.erase(it1+1, it2+1);
 		}
 	}
