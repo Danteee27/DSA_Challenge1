@@ -228,8 +228,6 @@ unordered_map<string, int> MajorRead(string path) {
 		getline(fin, s_temp, ',');
 		getline(fin, s_temp, ',');
 		getline(fin,s_temp2);
-		cout << s_temp;
-		cout << s_temp2 << " ";
 		res[s_temp] = stoi(s_temp2);
 	}
 
