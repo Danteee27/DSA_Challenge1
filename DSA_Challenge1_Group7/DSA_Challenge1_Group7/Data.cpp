@@ -21,9 +21,7 @@ int checkSpec(Score sco, vector<Score> sco_list) {
 
 
 vector<Score> ReadAF(string path, int &foundation) {
-	wfstream fin(path, wfstream::in);
-
-	fin.imbue(std::locale(std::locale(), new std::codecvt_utf8<wchar_t>));
+	fstream fin(path, fstream::in);
 
 	fin.seekg(-1, std::ios_base::end);
 	int end = fin.tellg(); // Ki tu cuoi cung cua .csv
@@ -37,19 +35,19 @@ vector<Score> ReadAF(string path, int &foundation) {
 
 	Score sco_temp;
 
-	wstring temp;
+	string temp;
 
 	while (fin.tellg() < end) {
-		getline(fin, sco_temp.ID, L',');
+		getline(fin, sco_temp.ID, ',');
 		Vietlanguage();
-		getline(fin, sco_temp.name, L',');
+		getline(fin, sco_temp.name, ',');
 		ASCIIlanguage();
 		getline(fin, temp);
-		if (temp == L"foundation") { 
+		if (temp == "foundation") { 
 			sco_temp.spec = 1; 
 			foundation++;
 		}
-		else if (temp == L"sub") sco_temp.spec = 0;
+		else if (temp == "sub") sco_temp.spec = 0;
 
 		res.push_back(sco_temp);
 	}
@@ -61,9 +59,7 @@ vector<Score> ReadAF(string path, int &foundation) {
 vector<Student> ReadStudent_Interest(string path) {
 	vector<Student> List;
 
-	wfstream fin(path, wfstream::in);
-
-	fin.imbue(std::locale(std::locale(), new std::codecvt_utf8<wchar_t>));
+	fstream fin(path, fstream::in);
 
 	fin.seekg(-1, std::ios_base::end);
 
@@ -74,7 +70,7 @@ vector<Student> ReadStudent_Interest(string path) {
 
 	fin.ignore(256, '\n'); // Bo line dau tien 
 
-	wstring temp;
+	string temp;
 
 	Student Stu_Temp;
 
@@ -88,24 +84,24 @@ vector<Student> ReadStudent_Interest(string path) {
 
 		Stu_Temp.interest.clear();
 
-		getline(fin, Stu_Temp.StudentID, L',');
+		getline(fin, Stu_Temp.StudentID, ',');
 
-		getline(fin, Stu_Temp.last, L',');
+		getline(fin, Stu_Temp.last, ',');
 
-		getline(fin, Stu_Temp.first, L',');
+		getline(fin, Stu_Temp.first, ',');
 
-		getline(fin, temp, L','); // REGDATE
+		getline(fin, temp, ','); // REGDATE
 
 		
-		getline(fin, temp, L',');
+		getline(fin, temp, ',');
 		Stu_Temp.interest.push_back(temp);
-		getline(fin, temp, L',');
+		getline(fin, temp, ',');
 		Stu_Temp.interest.push_back(temp);
-		getline(fin, temp, L',');
+		getline(fin, temp, ',');
 		Stu_Temp.interest.push_back(temp);
-		getline(fin, temp, L',');
+		getline(fin, temp, ',');
 		Stu_Temp.interest.push_back(temp);
-		getline(fin, temp, L',');
+		getline(fin, temp, ',');
 		Stu_Temp.interest.push_back(temp);
 		getline(fin, temp);
 		Stu_Temp.interest.push_back(temp);
@@ -120,9 +116,9 @@ vector<Student> ReadStudent_Grading(vector<Score> sco_list, string path) {
 
 	vector<Student> List;
 
-	wfstream fin(path, wfstream::in);
+	fstream fin(path, fstream::in);
 
-	fin.imbue(std::locale(std::locale(), new std::codecvt_utf8<wchar_t>));
+	//fin.imbue(std::locale(std::locale(), new std::codecvt_utf8<wchar_t>));
 
 	fin.seekg(-1, std::ios_base::end);
 	int end = fin.tellg(); // Ki tu cuoi cung cua .csv
@@ -132,9 +128,9 @@ vector<Student> ReadStudent_Grading(vector<Score> sco_list, string path) {
 
 	fin.ignore(256, '\n'); // Bo line dau tien 
 
-	wstring temp;
+	string temp;
 
-	wstring temp2;
+	string temp2;
 
 	Student stu_temp;
 
@@ -149,9 +145,9 @@ vector<Student> ReadStudent_Grading(vector<Score> sco_list, string path) {
 
 	while (fin.tellg() < end)
 	{
-		getline(fin,temp, L','); // Bo qua MAJ
+		getline(fin,temp, ','); // Bo qua MAJ
 
-		getline(fin, temp, L',');
+		getline(fin, temp, ',');
 
 		if (first_check == 0) temp2 = temp; // Lan dau tien set temp_ID2
 
@@ -166,31 +162,31 @@ vector<Student> ReadStudent_Grading(vector<Score> sco_list, string path) {
 		temp2 = temp; // Gan gia tri ID de check cho den khi ID khac'
 
 		stu_temp.StudentID = temp2;
-		getline(fin, stu_temp.last, L',');
-		getline(fin, stu_temp.first, L',');
-		getline(fin, stu_temp.programID, L',');
+		getline(fin, stu_temp.last, ',');
+		getline(fin, stu_temp.first, ',');
+		getline(fin, stu_temp.programID, ',');
 		
-		wstring Num_Temp;
-		getline(fin, Num_Temp, L','); // Bo qua 1 cot AY
+		string Num_Temp;
+		getline(fin, Num_Temp, ','); // Bo qua 1 cot AY
 	
 
-		getline(fin, Num_Temp, L',');
+		getline(fin, Num_Temp, ',');
 		
 		sco_temp.term = stoi(Num_Temp);
-		getline(fin, sco_temp.ID, L','); 
+		getline(fin, sco_temp.ID, ','); 
 		
 		Vietlanguage();
-		getline(fin, sco_temp.name, L',');
+		getline(fin, sco_temp.name, ',');
 		ASCIIlanguage();
 
-		getline(fin, Num_Temp, L',');   // Bo qua 1 cot Class
+		getline(fin, Num_Temp, ',');   // Bo qua 1 cot Class
 
 
-		getline(fin, Num_Temp, L',');
-		sco_temp.grade = Num_Temp == L"NULL" ? 0 : stod(Num_Temp);
+		getline(fin, Num_Temp, ',');
+		sco_temp.grade = Num_Temp == "NULL" ? 0 : stod(Num_Temp);
 
 
-		getline(fin, Num_Temp, L',');	// GradeType la` o^ tro^'ng
+		getline(fin, Num_Temp, ',');	// GradeType la` o^ tro^'ng
 
 		getline(fin, Num_Temp);
 		sco_temp.credits = stoi(Num_Temp);
@@ -211,30 +207,29 @@ vector<Student> ReadStudent_Grading(vector<Score> sco_list, string path) {
 }
 
 
-unordered_map<wstring, int> MajorRead(string path) {
-	unordered_map<wstring, int> res;
-	wfstream fin(path, wfstream::in);
+unordered_map<string, int> MajorRead(string path) {
+	unordered_map<string, int> res;
+	fstream fin(path, fstream::in);
 
-	fin.imbue(std::locale(std::locale(), new std::codecvt_utf8<wchar_t>));
+	
 
 	fin.seekg(-1, std::ios_base::end);
 
 	int end = fin.tellg(); // Ki tu cuoi cung cua .csv
 	fin.seekg(0, std::ios_base::beg);
 
-	fin.ignore(100, wchar_t(0xfeff)); // Bo ki tu dau tien 
-
 	fin.ignore(256, '\n'); // Bo line dau tien 
 
-	wstring s_temp;
-	wstring s_temp2;
+	string s_temp;
+	string s_temp2;
 
 
 	while (fin.tellg() < end) {
-		getline(fin, s_temp, L',');
-		getline(fin, s_temp, L',');
+		getline(fin, s_temp, ',');
+		getline(fin, s_temp, ',');
 		getline(fin,s_temp2);
-
+		cout << s_temp;
+		cout << s_temp2 << " ";
 		res[s_temp] = stoi(s_temp2);
 	}
 
@@ -242,14 +237,14 @@ unordered_map<wstring, int> MajorRead(string path) {
 }
 
 
-void TimNguoiThan(vector<Student> StuList, wstring TenNguoiThan) {
+void TimNguoiThan(vector<Student> StuList, string TenNguoiThan) {
 	for (int i = 0; i < StuList.size(); i++) {
 		//TIM KIEM TUAN LOC
 		if (StuList[i].StudentID == TenNguoiThan) {
-			wcout << StuList[i].StudentID << " " << StuList[i].last << " " << StuList[i].first << " " << StuList[i].RegDate << " ";
+			cout << StuList[i].StudentID << " " << StuList[i].last << " " << StuList[i].first << " " << StuList[i].RegDate << " ";
 			for (int damme = 0; damme < 6; damme++)
-				wcout << StuList[i].interest[damme] << " ";
-			wcout << StuList[i].Selected << " " << StuList[i].Chosen << " " << StuList[i].foundGPA << " " << StuList[i].allGPA << endl;
+				cout << StuList[i].interest[damme] << " ";
+			cout << StuList[i].Selected << " " << StuList[i].Chosen << " " << StuList[i].foundGPA << " " << StuList[i].allGPA << endl;
 		}
 	}
 }
@@ -257,13 +252,16 @@ void TimNguoiThan(vector<Student> StuList, wstring TenNguoiThan) {
 void SapDatThamVong(vector<Student>&StuList, mapWSI Majors) {
 	for (int i = 0; i < StuList.size(); i++) {
 		if (StuList[i].Chosen != -1) continue;
+
 		for (int j = 0; j < 6; j++) {
+
 			if (Majors[StuList[i].interest[j]] > 0) {
 				Majors[StuList[i].interest[j]]--;
 				StuList[i].Chosen = j + 1;
 				StuList[i].Selected = StuList[i].interest[j];
 				break;
 			}
+
 		}
 	}
 }
@@ -336,8 +334,8 @@ void mergeSort(vector<Student>& left, vector<Student>& right, vector<Student>& b
 
 	while (j < nL && k < nR)
 	{
-		wstring b1 = left[j].StudentID;
-		wstring b2 = right[k].StudentID;
+		string b1 = left[j].StudentID;
+		string b2 = right[k].StudentID;
 		int c1 = stoi(b1.erase(0, 2));
 		int c2 = stoi(b2.erase(0, 2));
 

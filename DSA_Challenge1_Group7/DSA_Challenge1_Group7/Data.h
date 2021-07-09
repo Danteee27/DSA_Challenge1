@@ -15,7 +15,6 @@
 #include <unordered_map>
 #include <cstdio>
 
-using std::wstring;
 
 using std::unordered_map;
 
@@ -25,17 +24,15 @@ using std::cout;
 
 using std::cin;
 
-using std::wcout;
-using std::wcin;
 using std::vector;
 using std::endl;
-using std::wofstream;
-using std::wifstream;
-using std::wfstream;
+using std::ofstream;
+using std::ifstream;
+using std::fstream;
 
 
 
-typedef unordered_map<wstring, int> mapWSI;
+typedef unordered_map<string, int> mapWSI;
 typedef struct Student Student;
 
 void Vietlanguage();
@@ -43,8 +40,8 @@ void ASCIIlanguage();
 
 
 struct Score {
-	wstring ID;
-	wstring name;
+	string ID;
+	string name;
 	int term;
 	double grade;
 	int credits = 0;
@@ -53,14 +50,14 @@ struct Score {
 
 
 struct Student {
-	wstring StudentID;
-	wstring last;
-	wstring first;
-	wstring programID;
+	string StudentID;
+	string last;
+	string first;
+	string programID;
 	vector<Score> score;
-	wstring RegDate;
-	vector<wstring> interest;
-	wstring Selected;
+	string RegDate;
+	vector<string> interest;
+	string Selected;
 	int Chosen = -1;
 	double allGPA;
 	double foundGPA;
@@ -73,9 +70,9 @@ vector<Score> ReadAF(string path, int& foundation);
 vector<Student> ReadStudent_Interest(string path);
 vector<Student> ReadStudent_Grading(vector<Score> sco_list, string path);
 
-unordered_map<wstring, int> MajorRead(string path);
+unordered_map<string, int> MajorRead(string path);
 
-void TimNguoiThan(vector<Student> StuList, wstring TenNguoiThan);
+void TimNguoiThan(vector<Student> StuList, string TenNguoiThan);
 void SapDatThamVong(vector<Student>&StuList, mapWSI Majors);
 void XoaNhungHocSinhKhongCoThamVong(vector<Student>& List);
 void HopNhatHocSinh(vector<Student> Interest_List, vector<Student>& Grade_List);

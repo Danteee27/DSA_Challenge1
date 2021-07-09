@@ -2,7 +2,7 @@
 #include "Output.h"
 
 int main(int argc, char* argv[]) {
-	if (argc < 3)
+	if (argc < 2)
 		return 0;
 
 	int foundation_num = 0;
@@ -21,19 +21,19 @@ int main(int argc, char* argv[]) {
 
 	sort_grade(List_Student_Grading);
 
-	unordered_map<wstring, int> major = MajorRead("Majors.csv");
-	SapDatThamVong(List_Student_Grading, major);
+	unordered_map<string, int> major = MajorRead("Majors.csv");
 
-	std::wstring_convert<std::codecvt_utf8<wchar_t>, wchar_t> converter;
+	SapDatThamVong(List_Student_Grading, major);
 
 	if (strcmp(argv[1], "-all") == 0)
 		NhungNguoiXungDang(List_Student_Grading, "Result.csv");
 
 
 	if (strcmp(argv[1], "-s") == 0)
-		TimNguoiThan(List_Student_Grading, converter.from_bytes(argv[2]));
+		TimNguoiThan(List_Student_Grading, argv[2]);
 
 
 	if (strcmp(argv[1], "-m") == 0)
 		writeMajor(List_Student_Grading, argv[2]);
+
 }
